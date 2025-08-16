@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees | Home</title>
+</head>
+
+<body>
+    <header>
+        <h3>Welcome to the Employee catalog system</h3>
+    </header>
+
+    <section>
+        <div class="add-employee-form">
+            <p>1. Submit the below form to add an employee:</p>
+            <form action="#" th:action="@{/addEmployee}" th:object="${employeeDTO}" method="post">
+                <label for="employee-id">Id:</label>
+                <!-- The for attribute of label should match with id of the input to link them -->
+                <input type="text" id="employee-id" placeholder="eg. ECS01001" th:field="*{id}" ><br><br>
+                <!-- The field name should match with the object or the object's variable sent from the controller's model 'attributeName' -->
+
+                <label for="employee-name">Name:</label>
+                <input type="text" id="employee-name" placeholder="eg. John Doe" th:field="*{name}" ><br><br>
+
+                <label for="employee-email">Email:</label>
+                <input type="email" id="employee-email" placeholder="eg. abc@xyz.com" th:field="*{email}" ><br><br>
+                
+                <label for="employee-location">Location:</label>
+                <input type="text" id="employee-location" placeholder="eg. Atlanta, US" th:field="*{location}" ><br><br>
+                
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <br>
+        <div class="other-hyperlinks">
+
+            2. <a th:href="@{/getAll}">Click to view all employees</a> <br><br>
+
+            <p>3. Enter user id and click Get user to view a particular employee</p>
+            <form action="#" th:action="@{/getById}">
+                <input type="text" name="id" placeholder="User id" required>
+                <!-- The name attribute's value should match with the variable name mentioned as the @RequestParam in the controller -->
+                <input type="submit" value="Get user">
+            </form>
+        </div>
+    </section>
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+</head>
+<body>
+    <section>
+        <div th:unless="${hasIssue}">
+            <h3>Success!</h3>
+            <p>Successfully added the employee to the database.</p>
+        </div>
+        
+        <div th:if="${hasIssue}">
+            <h3>Error!</h3>
+            <p th:text="${message}">An issue occured.</p>
+        </div>
+    </section>
+    <br><br>
+    <footer>
+      <a th:href="@{/home}">Click here to return to main page</a>
+    </footer>
+</body>
+</html>

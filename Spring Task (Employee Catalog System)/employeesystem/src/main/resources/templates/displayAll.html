@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employees | List</title>
+    <style>
+      table{
+        border-collapse: collapse;
+        border: 1px solid black;
+      }
+      td, th{
+        border-collapse: collapse;
+        border: 1px solid black;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h3>List of current employees:</h3>
+    </header>
+
+    <section>
+
+      <div th:unless="${dataIsPresent}">
+        <p th:text="${message}">No data</p>
+      </div>
+
+      <div th:if="${dataIsPresent}" class="employee-table">
+        <table>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Employee Id</th>
+              <th>Employee name</th>
+              <th>Employee email</th>
+              <th>Employee location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="emp, iterStat:${employeeDTOs}">
+                <td th:text="${iterStat.count}">1</td>
+                <td th:text="${emp.id}">ABC001</td>
+                <td th:text="${emp.name}">name</td>
+                <td th:text="${emp.email}">email</td>
+                <td th:text="${emp.location}">location</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <br><br>
+
+    <footer>
+      <a th:href="@{/home}">Click here to return to main page</a>
+    </footer>
+  </body>
+</html>

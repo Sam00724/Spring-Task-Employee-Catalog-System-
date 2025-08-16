@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display user by id</title>
+    <style>
+        .bold-font{
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h3>User data that you requested for:</h3>
+    </header>
+    <section>
+        <div th:each="item:${employees}">
+            <p><span class="bold-font">Id: </span><span th:text="${item.id}">1</span></p>
+            <p><span class="bold-font">Name: </span><span th:text="${item.name}">Charles</span></p>
+            <p><span class="bold-font">Email: </span><span th:text="${item.email}">charles.com</span></p>
+            <p><span class="bold-font">Location: </span><span  th:text="${item.location}">USA</span></p>
+        </div>
+    </section>
+    <br>
+    <footer>
+      <a th:href="@{/home}">Click here to return to main page</a>
+    </footer>
+</body>
+</html>
